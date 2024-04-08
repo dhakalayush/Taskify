@@ -1,0 +1,158 @@
+.login-page {
+  display: flex;
+  justify-content: space-around;
+  align-items: center; /* WHOLE PAGE */
+  height: 100vh;
+  background-color: #856eea;
+}
+
+.form-group {
+  margin: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5px; /* email and password text diection */
+  font-size: 1vw;
+}
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* left side  whole area */
+  text-align: center;
+  overflow: hidden;
+}
+
+.card h2 {
+  font-size: 2.5vw;
+  font-family: cursive;
+  font-weight: lighter; /*left side heading*/
+  opacity: 0.9;
+  padding: 3rem;
+}
+
+.left-part {
+  flex: 1;
+  padding: 20px;
+  background-image: url("./images/ui.jpg");
+  background-position: center;
+  color: #fff; /*left side background setting*/
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}
+
+.right-part {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; /*right side whole area*/
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.logo,
+.login-details h2 {
+  font-family: cursive; /*logo TASKIFY*/
+  font-size: 2vw;
+  font-weight: lighter;
+  opacity: 0.9;
+}
+.login-details p {
+  font-size: 0.8vw;
+}
+
+.login-details {
+  background-color: #fff;
+  padding: 20px;
+  padding-right: 40px;
+  text-align: center;
+  border-radius: 10px;
+  width: 45%;
+  height: 65%; /*login form */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  overflow: scroll;
+  object-fit: contain;
+}
+
+input,
+button {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1vw;
+  width: 100%;
+}
+
+input {
+  border: 1px solid #ccc;
+}
+
+button {
+  border: none;
+  background-color: #dbd1de;
+  cursor: pointer;
+}
+
+.google-login {
+  border-radius: 10px;
+  color: #000;
+  margin-top: 25px;
+  display: flex; /*continue with google*/
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.social-login-buttons button:hover,
+button:hover {
+  opacity: 0.8;
+}
+
+.bottom-text {
+  font-size: 0.8vw; /*terms and policies*/
+}
+
+.cn {
+  text-align: left;
+  margin-bottom: 20px; /*left side bottom*/
+}
+
+.cn p {
+  font-weight: lighter;
+  opacity: 0.9;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: cursive; /*left side bottom text*/
+
+  font-size: 1.1vw;
+}
+
+.loginbtn {
+  margin: 20px;
+  padding: 15px;
+  background-color: #856eea; /*login button*/
+}
+
+.pmbtn {
+  display: flex;
+  align-items: center; /*login button*/
+}
+
+.Signup {
+  margin: 20px;
+  font-size: 0.8vw;
+}
+
+.Signup p {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
