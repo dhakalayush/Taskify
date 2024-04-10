@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
-
+import axios from "axios";
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  function handleSubmit(event) {
+    event.preventDefault();
+    axios
+      .post("http://localhost:8081/login", { email, password })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
   return (
     <div className="login-page">
       <div className="left-part">
@@ -24,40 +33,44 @@ const LoginPage = () => {
         <div className="login-details">
           <div className="social-login-buttons">
             {/*   LOGIN FORM */}
+
             <h2>Log In</h2>
             <p>Use one of the services to continue with TASKify</p>
           </div>
 
           {/*EMAIL*/}
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-            />
-          </div>
-          {/*PASSWORD*/}
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="Enter your password"
-              required
-            />
-          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            {/*PASSWORD*/}
+            <div className="form-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
 
-          {/* loginBUTTON*/}
-          <div className="pmbtn">
-            <button type="button" className="loginbtn">
-              Log In
-            </button>
-          </div>
-
+            {/* loginBUTTON*/}
+            <div className="pmbtn">
+              <button type="submit" className="loginbtn">
+                Log In
+              </button>
+            </div>
+          </form>
           {/*CONTINUE WITH GOOGLE*/}
           <div className="ores">
             <p>OR</p>
