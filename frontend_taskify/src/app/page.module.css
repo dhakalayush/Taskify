@@ -1,0 +1,7 @@
+.main {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  border: 1px solid black;
+  height: 20px;
+  width: 10px;
+}
