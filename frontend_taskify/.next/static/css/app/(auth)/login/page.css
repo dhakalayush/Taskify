@@ -1,0 +1,136 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[7].use[3]!./src/app/(auth)/login/page.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+/* page.module.css */
+
+/* Main container */
+.page_main__QjUlq {
+  display: flex;
+  height: 100vh;
+}
+
+/* Left page container */
+.page_main2__rZBID {
+  width: 100%;
+  background-image: url("/img/ui.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Background image */
+.page_main3__qJ4lR {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Right page container */
+.page_main4__MGbRY {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: cursive;
+  background-color: #856eea;
+  width: 100%;
+}
+
+/* Form container */
+.page_form__4lOgm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  background-color: white;
+  padding: 2rem;
+  height: 50vh;
+  width: 40vh;
+  overflow: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Added box shadow */
+}
+
+/* Form label */
+.page_form__4lOgm label {
+  margin-bottom: 0.5rem;
+  display: inline-block; /* Ensures labels are block elements */
+  text-align: left; /* Aligns text to the left */
+  width: 80%; /* Controls the width of the labels */
+}
+
+/* Form input */
+.page_form__4lOgm input {
+  margin-bottom: 1rem;
+  width: 80%;
+  height: 20px; /* Increased height of input boxes */
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1vw;
+}
+
+/* Login and Continue with Mail buttons */
+.page_pbtn__XqjKs,
+.page_sbtn__GNy9r {
+  border-radius: 10px;
+  text-align: center;
+  width: 80%; /* Adjusted width to match input boxes */
+  height: 20%; /* Adjusted height to match input boxes */
+  padding: 10px; /* Added padding */
+}
+
+/* Login button */
+.page_pbtn__XqjKs {
+  background-color: #856eea;
+}
+
+/* Form heading */
+.page_heading__Qk8ez {
+  font-weight: lighter;
+  font-size: 1.6vh;
+}
+
+/* Bottom text */
+.page_btmtxt__rOeKY {
+  font-weight: lighter;
+  margin-top: 3rem;
+  font-size: 2vh;
+}
+
+/* OR Text */
+.page_or__8wkID {
+  margin: 0.5rem;
+}
+
+.page_logo__Am7vD {
+  font-size: 4vh;
+  font-weight: lighter;
+  margin-bottom: 5rem;
+}
+
+.page_fmhd__DGymn {
+  font-weight: lighter;
+  font-size: 3vh;
+}
+
+.page_left_head__GF31_ {
+  text-align: center;
+  font-weight: bold;
+  font-family: cursive;
+  font-size: 4vh;
+  padding: 2rem;
+  color: white;
+}
+.page_left_btm__m4pW_ {
+  color: white;
+  font-weight: bold;
+  font-size: 2vh;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30%;
+  margin: 3rem;
+}
+.page_lo__zALaj {
+  text-decoration: none;
+  color: black;
+}
+
