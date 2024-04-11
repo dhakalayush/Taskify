@@ -38,15 +38,12 @@ export default function Home() {
           />
 
           {/* Login Button */}
-<<<<<<< HEAD
           <button className={styles.pbtn}>LOGIN</button>
-=======
           <button className={styles.pbtn}>
             <a href="/dashboard" className={styles.lo}>
               LOGIN
             </a>
           </button>
->>>>>>> 344b52d (updated)
           <span className={styles.or}>OR </span>
 
           {/* Continue with Mail Button */}

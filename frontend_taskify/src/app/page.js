@@ -7,9 +7,6 @@ export default function LandingPage() {
       <div className={styles.navbar}>
         <Navbar />
       </div>
-<<<<<<< HEAD
-      <div className={styles.main}></div>
-=======
       <div className={styles.main}>
         <div className={styles.gridContainer}>
           <div className={styles.gridItem1}>
@@ -64,7 +61,6 @@ export default function LandingPage() {
           <p>&copy; 2024 Taskify. All rights reserved.</p>
         </footer>
       </div>
->>>>>>> 344b52d (updated)
     </>
   );
 }
