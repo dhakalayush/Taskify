@@ -1,7 +1,101 @@
+<<<<<<< HEAD
 .main {
   display: grid;
   grid-template-rows: repeat(3, 1fr);
   border: 1px solid black;
   height: 20px;
   width: 10px;
+=======
+.gridContainer {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr 1fr 1fr 0.5fr; /* Adjust grid row heights as needed */
+  gap: 10px; /* Adjust the gap between grid items */
+  height: 100%;
+  background-color: #f6f1eb;
+  text-align: center;
+  font-family: cursive;
+}
+.main {
+}
+
+.gridItem1 {
+  background-image: url("/img/people.jpg");
+  background-position: right;
+
+  background-repeat: no-repeat;
+  text-align: left;
+  margin-left: 1rem;
+  margin: 2rem;
+  padding: 2rem;
+}
+.text,
+.bold {
+  font-size: 3vh;
+  margin: 5rem;
+  margin-left: 1rem;
+  color: #b8860b;
+}
+.btn {
+  border-radius: 20px;
+  background-color: #9d78e6;
+
+  padding: 1rem;
+  text-decoration: none;
+  color: white;
+  font-size: 2vh;
+}
+.btn:hover {
+  background-color: #483d8b;
+}
+
+.about,
+.us {
+  text-align: center;
+  margin: 5rem;
+  font-size: 3vh;
+}
+.about {
+  font-size: 4vh;
+}
+.us {
+  color: #b8860b;
+}
+.coll {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.minion1,
+.minion2,
+.minion3,
+.minion4 {
+  border-radius: 50%;
+  height: 15rem;
+  width: 13rem;
+  margin-left: 4rem;
+}
+
+.gridItem3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #708090;
+}
+.gridItem4 {
+}
+.chat {
+  font-size: 6vh;
+}
+.learn {
+  font-size: 3vh;
+}
+
+.footer {
+  background-color: black;
+  color: white;
+  padding: 20px;
+  text-align: center;
+>>>>>>> 344b52d (updated)
 }

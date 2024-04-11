@@ -8,6 +8,7 @@ export default function Navbar() {
       </div>
       <div className={styles.linksContainer}>
         <a href="/" className={styles.link}>
+<<<<<<< HEAD
           About
         </a>
         <a href="/" className={styles.link}>
@@ -19,6 +20,19 @@ export default function Navbar() {
         <a href="/" className={styles.link}>
           More
         </a>
+=======
+          Home
+        </a>
+        <a href="/" className={styles.link}>
+          About
+        </a>
+        <a href="/" className={styles.link}>
+          Features
+        </a>
+        <a href="/" className={styles.link}>
+          Contact
+        </a>
+>>>>>>> 344b52d (updated)
       </div>
     </div>
   );

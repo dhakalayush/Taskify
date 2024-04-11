@@ -10,7 +10,11 @@
 .logo h1 {
   font-size: 3rem;
   font-weight: bold;
+<<<<<<< HEAD
   color: #8352e2;
+=======
+  color: black;
+>>>>>>> 344b52d (updated)
   font-size: 5vh;
   font-family: "Courier New", Courier, monospace;
 }
