@@ -1,6 +1,20 @@
-import styles from "./page.module.css";
+"use client"; // This is a client component
 
-export default function Home() {
+import styles from "./page.module.css";
+import React, { useState } from "react";
+import axios from "axios";
+
+const Home = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  function handleSubmit(event) {
+    event.preventDefault();
+    axios
+      .post("http://localhost:8081/login", { username, password })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  }
+
   return (
     <div className={styles.main}>
       {/* Left page */}
@@ -25,25 +39,40 @@ export default function Home() {
           </h3>
 
           {/* Username Input */}
-          <label htmlFor="username">Username</label>
-          <input type="text" id="username" placeholder="Username" required />
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username"
+              required
+              onChange={(e) => setUsername(e.target.value)}
+            />
 
-          {/* Password Input */}
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            required
-          />
+            {/* Password Input */}
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-          {/* Login Button */}
-          <button className={styles.pbtn}>LOGIN</button>
-          <button className={styles.pbtn}>
-            <a href="/dashboard" className={styles.lo}>
+            {/* Login Button */}
+            <button type="submit" className={styles.pbtn}>
               LOGIN
-            </a>
-          </button>
+            </button>
+            <button className={styles.pbtn}>
+              <a href="/dashboard" className={styles.lo}>
+                LOGIN
+              </a>
+            </button>
+          </form>
+
+
           <span className={styles.or}>OR </span>
 
           {/* Continue with Mail Button */}
@@ -64,4 +93,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+export default Home;
+
