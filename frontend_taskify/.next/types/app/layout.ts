@@ -1,4 +1,4 @@
-// File: C:\Users\jackq\OneDrive\Documents\Semester Project\Github\taskify\frontend_taskify\src\app\layout.js
+// File: /home/anish/Documents/Projects/5th Semester Project/Taskify/frontend_taskify/src/app/layout.js
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
