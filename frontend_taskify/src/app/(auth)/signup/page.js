@@ -7,10 +7,13 @@ import axios from "axios";
 const Home = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [fullname, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+
   function handleSubmit(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:8081/login", { username, password })
+      .post("http://localhost:8080/signup", { fullname, email,username, password })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
@@ -45,10 +48,11 @@ const Home = () => {
             <label htmlFor="full name">Full Name</label>
             <input
               type="text"
-              id="full name"
+              id="fullname"
               name="full name"
               placeholder="Full Name"
               required
+              onChange={(e) => setFullName(e.target.value)}
             />
 
 
@@ -60,6 +64,7 @@ const Home = () => {
               name="email"
               placeholder="Email"
               required
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <label htmlFor="username">Username</label>
@@ -69,6 +74,7 @@ const Home = () => {
               name="username"
               placeholder="Username"
               required
+              onChange={(e) => setUsername(e.target.value)}
             />
 
             {/* Password Input */}
@@ -79,6 +85,7 @@ const Home = () => {
               name="password"
               placeholder="Password"
               required
+              onChange={(e) => setPassword(e.target.value)}
             />
 
             {/* Password Input */}
@@ -88,7 +95,6 @@ const Home = () => {
               id="password"
               name="password"
               placeholder="Password"
-              required
             />
             {/* Login Button */}
             <button type="submit" className={styles.pbtn}>
