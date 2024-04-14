@@ -13,7 +13,12 @@ const Home = () => {
   function handleSubmit(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:8080/signup", { fullname, email,username, password })
+      .post("http://localhost:8080/signup", {
+        fullname,
+        email,
+        username,
+        password,
+      })
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
@@ -43,7 +48,6 @@ const Home = () => {
 
           {/* Username Input */}
           <form onSubmit={handleSubmit}>
-
             {/* Password Input */}
             <label htmlFor="full name">Full Name</label>
             <input
@@ -54,7 +58,6 @@ const Home = () => {
               required
               onChange={(e) => setFullName(e.target.value)}
             />
-
 
             {/* Password Input */}
             <label htmlFor="email">Email</label>
@@ -92,13 +95,13 @@ const Home = () => {
             <label htmlFor="password">Confirm Password</label>
             <input
               type="password"
-              id="password"
+              id="repassword"
               name="password"
               placeholder="Password"
             />
             {/* Login Button */}
             <button type="submit" className={styles.pbtn}>
-            SIGNUP
+              SIGNUP
             </button>
           </form>
 
@@ -119,4 +122,3 @@ const Home = () => {
   );
 };
 export default Home;
-
