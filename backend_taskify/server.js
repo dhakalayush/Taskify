@@ -8,11 +8,11 @@ app.use(cors());
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "root",
-  database: "login_database",
+  password: "Pass@1234",
+  database: "Taskify",
 });
 app.post("/login", (req, res) => {
-  const sql = "SELECT * FROM login_task WHERE username = ? AND password=?";
+  const sql = "SELECT * FROM user_info WHERE username = ? AND password=?";
 
   db.query(sql, [req.body.username, req.body.password], (err, data) => {
 
@@ -25,7 +25,7 @@ app.post("/login", (req, res) => {
     if (data.length > 0) {
       return res.json("Login Succesfully");
     } else {
-      return res.json("No REcord");
+      return res.json("No Record Found with this username. Please check Username or Password");
     }
   });
 });

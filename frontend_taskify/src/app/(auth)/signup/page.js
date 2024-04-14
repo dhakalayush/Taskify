@@ -33,13 +33,35 @@ const Home = () => {
       <div className={styles.main4}>
         <h1 className={styles.logo}>TASKify</h1>
         <div className={styles.form}>
-          <h1 className={styles.fmhd}>LOG IN</h1>
+          <h1 className={styles.fmhd}>SIGNUP</h1>
           <h3 className={styles.heading}>
             Use one of the services to continue with TASKify
           </h3>
 
           {/* Username Input */}
           <form onSubmit={handleSubmit}>
+
+            {/* Password Input */}
+            <label htmlFor="full name">Full Name</label>
+            <input
+              type="text"
+              id="full name"
+              name="full name"
+              placeholder="Full Name"
+              required
+            />
+
+
+            {/* Password Input */}
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              required
+            />
+
             <label htmlFor="username">Username</label>
             <input
               type="text"
@@ -47,7 +69,6 @@ const Home = () => {
               name="username"
               placeholder="Username"
               required
-              onChange={(e) => setUsername(e.target.value)}
             />
 
             {/* Password Input */}
@@ -58,18 +79,26 @@ const Home = () => {
               name="password"
               placeholder="Password"
               required
-              onChange={(e) => setPassword(e.target.value)}
             />
 
+            {/* Password Input */}
+            <label htmlFor="password">Confirm Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
             {/* Login Button */}
             <button type="submit" className={styles.pbtn}>
-              LOGIN
+            SIGNUP
             </button>
           </form>
 
           {/* Sign Up Link */}
           <p>
-            Don't have an account? <a href="/signup">Sign up</a>
+            Already have an account? <a href="/login">Login</a>
           </p>
         </div>
 
