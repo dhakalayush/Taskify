@@ -15,6 +15,7 @@ app.post("/login", (req, res) => {
   const sql = "SELECT * FROM login_task WHERE username = ? AND password=?";
 
   db.query(sql, [req.body.username, req.body.password], (err, data) => {
+
     // if (err) return res.json("ERROR");
     if (err) {
       console.error("MySQL Error:", err);
@@ -31,4 +32,5 @@ app.post("/login", (req, res) => {
 
 app.listen(8081, () => {
   console.log("SERVER IS RUNNING AT 8081");
+
 });

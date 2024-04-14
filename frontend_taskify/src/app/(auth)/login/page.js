@@ -14,6 +14,7 @@ const Home = () => {
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
   }
+
   return (
     <div className={styles.main}>
       {/* Left page */}
@@ -71,6 +72,7 @@ const Home = () => {
             </button>
           </form>
 
+
           <span className={styles.or}>OR </span>
 
           {/* Continue with Mail Button */}
@@ -93,3 +95,4 @@ const Home = () => {
   );
 };
 export default Home;
+
