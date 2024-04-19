@@ -1,0 +1,46 @@
+"use client"; // This is a client component
+
+import styles from "./page.module.css";
+import Link from "next/link";
+
+import { useRouter } from "next/navigation";
+
+export default function Sidebar() {
+  const router = useRouter();
+  const handleLogout = () => {
+    localStorage.removeItem("token"); // Remove the token from localStorage
+    router.push("/login"); // Redirect to the login page after logout
+  };
+  return (
+    <div className={styles.container}>
+      <div className={styles.logo}>
+        <h1>TASKify</h1>
+      </div>
+      <div className={styles.container2}>
+        <div className={styles.items}>
+          <Link href="/dashboard/maincontent" className={styles.item1}>
+            Dashboard
+          </Link>
+          <Link href="/dashboard/activites" className={styles.item2}>
+            Activities
+          </Link>
+          <Link href="/dashboard/chart" className={styles.item3}>
+            Chart
+          </Link>
+          <Link href="/dashboard/workplace" className={styles.item4}>
+            Workplace
+          </Link>
+          <Link href="/dashboard/others" className={styles.item5}>
+            Others
+          </Link>
+
+          <button onClick={handleLogout}>Logout</button>
+
+          {/* <Link href="/dashboard/logout" className={styles.item5}>
+            Log Out
+          </Link> */}
+        </div>
+      </div>
+    </div>
+  );
+}

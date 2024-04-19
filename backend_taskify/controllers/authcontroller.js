@@ -16,7 +16,11 @@ exports.login = (req, res) => {
     }
 
     if (data.length === 0) {
-      return res.status(400).json({ error: "No Record Found", message: "No Record Found with this username. Please check Username or Password" });
+      return res.status(400).json({
+        error: "No Record Found",
+        message:
+          "No Record Found with this username. Please check Username or Password",
+      });
     }
 
     // comparing hashed password with entered password
@@ -29,11 +33,16 @@ exports.login = (req, res) => {
 
       if (result) {
         // Generate JWT token
-        const token = jwt.sign({ username: username }, secretKey, { expiresIn: "1h" });
+        const token = jwt.sign({ username: username }, secretKey, {
+          expiresIn: "1h",
+        });
         return res.json({ message: "Login Successfully", token: token });
         res.redirect("http://localhost:3000/dashboard");
       } else {
-        return res.status(400).json({ error: "Incorrect Password", message: "Incorrect Password. Please try again." });
+        return res.status(400).json({
+          error: "Incorrect Password",
+          message: "Incorrect Password. Please try again.",
+        });
       }
     });
   });
@@ -43,7 +52,8 @@ exports.signup = (req, res) => {
   const { fullname, email, username, password, confirm_password } = req.body;
 
   // Check if email or username already exist in the database
-  const checkExistingUser = "SELECT * FROM user_signup WHERE Email = ? OR Username = ?";
+  const checkExistingUser =
+    "SELECT * FROM user_signup WHERE email = ? OR username = ?";
   db.query(checkExistingUser, [email, username], (err, results) => {
     if (err) {
       console.error("MySQL Error:", err);
@@ -52,8 +62,13 @@ exports.signup = (req, res) => {
 
     if (results.length > 0) {
       // Email or username already exists
-      const existingUser = results.find(user => user.Email === email || user.Username === username);
-      const message = existingUser.Email === email ? "Email already exists." : "Username already exists.";
+      const existingUser = results.find(
+        (user) => user.Email === email || user.Username === username
+      );
+      const message =
+        existingUser.Email === email
+          ? "Email already exists."
+          : "Username already exists.";
       return res.status(400).json({ error: message });
     }
 
@@ -64,16 +79,20 @@ exports.signup = (req, res) => {
         return res.status(500).json({ error: "Internal Server Error" });
       }
 
-      const insertUserQuery = "INSERT INTO user_signup (Full_Name, Email, Username, Password) VALUES (?, ?, ?, ?)";
-      db.query(insertUserQuery, [fullname, email, username, hashedPassword], (insertErr, result) => {
-        if (insertErr) {
-          console.error("MySQL Error:", insertErr);
-          return res.status(500).json({ error: "Internal Server Error" });
-        }
+      const insertUserQuery =
+        "INSERT INTO user_signup (fullname, email, username, Password) VALUES (?, ?, ?, ?)";
+      db.query(
+        insertUserQuery,
+        [fullname, email, username, hashedPassword],
+        (insertErr, result) => {
+          if (insertErr) {
+            console.error("MySQL Error:", insertErr);
+            return res.status(500).json({ error: "Internal Server Error" });
+          }
 
-        return res.json({ message: "Signup Successful" });
-      });
+          return res.json({ message: "Signup Successful" });
+        }
+      );
     });
   });
 };
-
