@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 // File: /home/ayush/Documents/vscode/nextjs/taskifyrs/frontend_taskify/src/app/layout.js
+=======
+// File: /home/ayush/Documents/GitHub/taskifyrs/frontend_taskify/src/app/layout.js
+>>>>>>> Stashed changes
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
