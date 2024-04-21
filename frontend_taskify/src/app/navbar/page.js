@@ -16,7 +16,12 @@ export default function Navbar() {
         <a href="/" className={styles.link}>
           Contact
         </a>
-
+        <a href="/" className={styles.link}>
+          Portfolio
+        </a>
+        <a href="/" className={styles.link}>
+          More
+        </a>
         <a href="/" className={styles.link}>
           Features
         </a>

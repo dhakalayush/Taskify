@@ -1,4 +1,4 @@
-// File: /home/ayush/Documents/vscode/nextjs/taskifyrs/frontend_taskify/src/app/(auth)/login/page.js
+// File: /home/anish/Documents/Projects/5th Semester Project/Taskify/frontend_taskify/src/app/(auth)/login/page.js
 import * as entry from '../../../../../src/app/(auth)/login/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

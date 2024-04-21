@@ -1,3 +1,4 @@
+"use client";
 import styles from "./page.module.css";
 import { MdNotifications, MdSearch, MdChat } from "react-icons/md"; // Corrected icon name for chat
 

@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-export default function Dashboard() {
-  return <h1>Dashboard</h1>;
-=======
-"use client"; // This is a client component
+"use client";
 
 import { useEffect } from "react";
 import { isAuthenticated } from "../(auth)/auth.js";
@@ -36,5 +32,4 @@ export default function Dashboard() {
       </div>
     </div>
   );
->>>>>>> Stashed changes
 }

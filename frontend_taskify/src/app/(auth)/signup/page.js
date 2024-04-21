@@ -3,15 +3,39 @@
 import styles from "./page.module.css";
 import React, { useState } from "react";
 import axios from "axios";
+import { useEffect } from 'react';
+import { isAuthenticated } from '../auth.js';
+import { useRouter } from 'next/navigation';
 
 const Home = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [fullname, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const router = useRouter(); 
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      router.push('/dashboard'); // Redirect to dashboard if already authenticated
+    }
+  }, []);
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    // Input validation
+    if (!username || !password || !fullname || !email || !confirmPassword) {
+      alert("All fields are required.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Password and confirm password do not match.");
+      return;
+    }
+
     axios
       .post("http://localhost:8080/signup", {
         fullname,
@@ -19,8 +43,17 @@ const Home = () => {
         username,
         password,
       })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        console.log(res.data);
+        // Optionally redirect to another page upon successful signup
+      })
+      .catch((err) => {
+        if (err.response && err.response.data && err.response.data.error) {
+          alert(err.response.data.error); // Show alert for error message from backend
+        } else {
+          alert("An error occurred. Please try again."); // Generic error alert
+        }
+      });
   }
 
   return (
@@ -46,20 +79,18 @@ const Home = () => {
             Use one of the services to continue with TASKify
           </h3>
 
-          {/* Username Input */}
+          {/* Signup Form */}
           <form onSubmit={handleSubmit}>
-            {/* Password Input */}
-            <label htmlFor="full name">Full Name</label>
+            <label htmlFor="fullname">Full Name</label>
             <input
               type="text"
               id="fullname"
-              name="full name"
+              name="fullname"
               placeholder="Full Name"
               required
               onChange={(e) => setFullName(e.target.value)}
             />
 
-            {/* Password Input */}
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -80,7 +111,6 @@ const Home = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
 
-            {/* Password Input */}
             <label htmlFor="password">Password</label>
             <input
               type="password"
@@ -91,15 +121,16 @@ const Home = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            {/* Password Input */}
-            <label htmlFor="password">Confirm Password</label>
+            <label htmlFor="confirmPassword">Confirm Password</label>
             <input
               type="password"
-              id="repassword"
-              name="password"
-              placeholder="Password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              required
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
-            {/* Login Button */}
+
             <button type="submit" className={styles.pbtn}>
               SIGNUP
             </button>
@@ -121,4 +152,5 @@ const Home = () => {
     </div>
   );
 };
+
 export default Home;
