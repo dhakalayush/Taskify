@@ -20,7 +20,7 @@ exports.login = (req, res) => {
     }
 
     // comparing hashed password with entered password
-    const hashedPassword = data[0].Password;
+    const { id, Password: hashedPassword } = data[0]; // Assuming the id is retrieved from the database
     bcrypt.compare(password, hashedPassword, (bcryptErr, result) => {
       if (bcryptErr) {
         console.error("Bcrypt Error:", bcryptErr);
@@ -28,8 +28,11 @@ exports.login = (req, res) => {
       }
 
       if (result) {
-        // Generate JWT token
-        const token = jwt.sign({ username: username }, secretKey, { expiresIn: "1h" });
+        const token = jwt.sign({ id, username }, secretKey, { expiresIn: "1h" });
+        
+        const decoded = jwt.decode(token);
+        console.log("Decoded JWT Payload:", decoded);
+        
         return res.json({ message: "Login Successfully", token: token });
       } else {
         return res.status(400).json({ error: "Incorrect Password", message: "Incorrect Password. Please try again." });
@@ -37,6 +40,7 @@ exports.login = (req, res) => {
     });
   });
 };
+
 
 exports.signup = (req, res) => {
   const { fullname, email, username, password, confirm_password } = req.body;

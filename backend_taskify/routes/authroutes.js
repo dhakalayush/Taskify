@@ -4,6 +4,7 @@ const controller = require("../controllers/authcontroller");
 const jwt = require("jsonwebtoken");
 const secretKey = "your_secret_key";
 const taskcontroller = require("../controllers/taskscontroller");
+const workplacecontroller = require("../controllers/workplacecontroller");
 
 // JWT middleware function
 const verifyToken = (req, res, next) => {
@@ -30,5 +31,8 @@ router.get("/protected-route", verifyToken, (req, res) => {
 });
 
 router.post("/add_tasks", taskcontroller.addtasks);
+router.get("/see_tasks", taskcontroller.seetasks);
+
+router.post("/add_workplace", workplacecontroller.addworkplace);
 
 module.exports = router;
