@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const secretKey = "your_secret_key";
 const taskcontroller = require("../controllers/taskscontroller");
 const workplacecontroller = require("../controllers/workplacecontroller");
+const workplaccetaskcontroller = require("../controllers/workplacetaskcontroller");
 
 // JWT middleware function
 const verifyToken = (req, res, next) => {
@@ -24,6 +25,8 @@ const verifyToken = (req, res, next) => {
 
 router.post("/login", controller.login);
 router.post("/signup", controller.signup);
+router.post("/update_password", controller.updatePassword);
+router.get("/delete_profile", controller.deleteProfile);
 
 // Example of protected route using JWT middleware
 router.get("/protected-route", verifyToken, (req, res) => {
@@ -32,7 +35,15 @@ router.get("/protected-route", verifyToken, (req, res) => {
 
 router.post("/add_tasks", taskcontroller.addtasks);
 router.get("/see_tasks", taskcontroller.seetasks);
+router.get("/delete_tasks", taskcontroller.deleteTasks);
 
 router.post("/add_workplace", workplacecontroller.addworkplace);
+router.get("/see_workplace", workplacecontroller.seeworkplace);
+router.post("/add_members", workplacecontroller.addmembers);
+router.get("/delete_workplace", workplacecontroller.deleteworkplace);
+
+router.post("/add_workplace_tasks", workplaccetaskcontroller.addwtasks);
+router.get("/see_workplace_tasks", workplaccetaskcontroller.seewtasks);
+router.get("/delete_workplace_tasks", workplaccetaskcontroller.deleteworkplacetask);
 
 module.exports = router;

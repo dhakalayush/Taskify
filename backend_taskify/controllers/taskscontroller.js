@@ -67,3 +67,40 @@ exports.seetasks = (req, res) => {
     });
   });
 };
+
+exports.deleteTasks = (req, res) => {
+  const { tasks_id } = req.body;
+  const token = req.headers['authorization'];
+
+  if (!token) {
+    return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+  }
+
+  jwt.verify(token, 'your_secret_key', (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
+
+    const userId = decoded.id;
+    const sqlCheck = "SELECT * FROM tasks WHERE userid = ? AND id = ?";
+    db.query(sqlCheck, [userId, tasks_id], (selectErr, selectResult1) => {
+      if (selectErr) {
+        console.error("MySQL Error: ", selectErr);
+        return res.status(500).json({ error: "Internal Server Error" });
+      }
+
+      if (!selectResult1 || selectResult1.length === 0) {
+        return res.status(404).json({ error: "Not Found", message: "No tasks found to delete" });
+      }
+
+      const sqldelete = "DELETE FROM tasks WHERE userid = ? AND id = ?";
+      db.query(sqldelete, [userId, tasks_id], (deleteErr, deleteResult) => {
+        if (deleteErr) {
+          console.error("MySQL Error: ", deleteErr);
+          return res.status(500).json({ error: "Internal Server Error" });
+        }
+        return res.json({ message: "Task Deleted Successfully" });
+      });
+    });
+  });
+};

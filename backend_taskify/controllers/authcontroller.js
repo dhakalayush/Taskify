@@ -80,3 +80,63 @@ exports.signup = (req, res) => {
   });
 };
 
+exports.updatePassword = (req, res) => {
+  const { password } = req.body;
+  const token = req.headers['authorization'];
+
+  if (!token) {
+    return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+  }
+
+  jwt.verify(token, 'your_secret_key', (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
+
+    const userId = decoded.id;
+
+    // Hash the new password before storing it
+    bcrypt.hash(password, 10, (hashErr, hashedPassword) => {
+      if (hashErr) {
+        console.error("Hashing Error: ", hashErr);
+        return res.status(500).json({ error: "Internal Server Error" });
+      }
+
+      const sql = "UPDATE user_signup SET Password = ? WHERE id = ?";
+      db.query(sql, [hashedPassword, userId], (updateErr, updateResult) => {
+        if (updateErr) {
+          console.error("MySQL Error: ", updateErr);
+          return res.status(500).json({ error: "Internal Server Error" });
+        }
+
+        return res.json({ message: "Password Updated Successfully" });
+      });
+    });
+  });
+};
+
+exports.deleteProfile = (req,res)=>{
+  const token = req.headers['authorization'];
+
+  if(!token){
+    return res.status(401).json({error:"Unauthorized", message:"JWT token is required"});
+  }
+
+  jwt.verify(token, 'your_secret_key', (err, decoded)=>{
+    if(err){
+      return res.status(401).json({error:"Invalid token"});
+    }
+
+    const userId = decoded.id;
+
+    const sqldelete = "DELETE FROM user_signup WHERE id = ?";
+    db.query(sqldelete, [userId], (selectErr, selectResult)=>{
+      if(selectErr){
+        console.error("MySQL Error: ", selectErr);
+        return res.status(500).json({error: "Internal Server Error"});
+      }
+
+      return res.json({message:"Profile Deleted Successfully"});
+    })
+  })
+}
