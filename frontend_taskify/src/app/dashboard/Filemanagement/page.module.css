@@ -1,0 +1,39 @@
+.files {
+  height: 100%;
+  margin-top: 10px;
+  display: flex; /* Use flexbox to align items vertically */
+  flex-direction: column; /* Arrange items vertically */
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30em; /* Set a fixed height for the form */
+  width: 99%; /* Set width to 100% to fill the container */
+  cursor: pointer;
+  border-radius: 10px;
+  margin: 10px 0; /* Adjust margin for spacing */
+}
+
+.edit {
+  margin: 5px;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.image {
+  max-width: 100%; /* Adjust maximum width to fit container */
+  max-height: 100%; /* Adjust maximum height to fit container */
+  object-fit: contain; /* Maintain aspect ratio */
+}
+
+.pdfViewer {
+  max-width: 100%; /* Adjust maximum width to fit container */
+  max-height: 100%; /* Adjust maximum height to fit container */
+}
+.delete {
+  cursor: pointer;
+}

@@ -30,10 +30,33 @@
       "static/css/app/dashboard/layout.css",
       "static/chunks/app/dashboard/layout.js"
     ],
+    "/dashboard/workplace/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dashboard/workplace/page.css",
+      "static/chunks/app/dashboard/workplace/page.js"
+    ],
+    "/dashboard/workplace/home/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/dashboard/workplace/home/page.js"
+    ],
+    "/dashboard/workplace/home/layout": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dashboard/workplace/home/layout.css",
+      "static/chunks/app/dashboard/workplace/home/layout.js"
+    ],
     "/dashboard/activities/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/dashboard/activities/page.js"
+    ],
+    "/dashboard/workplace/home/addtask/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dashboard/workplace/home/addtask/page.css",
+      "static/chunks/app/dashboard/workplace/home/addtask/page.js"
     ],
     "/not-found": [
       "static/chunks/webpack.js",

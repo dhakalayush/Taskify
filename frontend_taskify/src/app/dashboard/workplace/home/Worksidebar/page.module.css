@@ -1,0 +1,44 @@
+.container{
+    display: flex;
+}
+.container1{
+    flex: 4;
+   
+}
+.container2{
+    flex: 0.9;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+   
+}
+.side{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+   justify-content: space-evenly;
+   position: fixed; /* Fix the sidebar to its position */
+   top: 0;
+   right: 0;
+   
+}
+.item{
+margin: 1rem;
+padding: 1rem;
+color: black;
+border-radius: 20px;
+background-color: #D3D0D0;
+width: 50%;
+text-align: center;
+box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+text-decoration: none;
+font-size: 0.8rem;
+}
+.item:hover{
+    background-color: #e0bbbb;
+    transform: translateX(-10px); /* Move 10px up */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+.item.clicked{
+    background-color: #e0bbbb ;
+}

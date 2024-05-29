@@ -1,0 +1,10 @@
+.containeree{
+    display: flex;
+}
+.menu{
+  flex:3;
+  right: 1;
+}
+.contents{
+    flex: 0.5;  
+}

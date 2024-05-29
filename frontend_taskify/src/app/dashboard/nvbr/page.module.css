@@ -1,5 +1,5 @@
 .container {
-  height: 16vh;
+  height: 4rem;
   width: 100%;
   background-color: #f1f0e8;
   box-shadow: 0 1px 5px;
@@ -21,13 +21,13 @@
 .search {
   display: flex;
   align-items: center;
-  gap: 10px;
   background-color: white;
-  border: 1px solid black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 10px;
   margin-left: 1rem;
   border-radius: 10px;
-  width: 30%;
+  width: 35%;
+  height: 1.5rem;
 }
 .input {
   border: none;
@@ -35,11 +35,7 @@
   width: 100%;
   font-size: 2vh;
 }
-.user {
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-}
+
 .profile {
   display: flex;
   flex-direction: column;

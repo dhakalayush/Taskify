@@ -1,0 +1,95 @@
+.container {
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+    margin: 2rem 0 0 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+.header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    padding: 0.5rem;
+    box-shadow: 0 3px 5px;
+}
+
+.taskForm {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.input {
+    margin-left: 1rem;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-align: center;
+   
+    
+}
+
+.button {
+    margin: 1rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    background-color: #0070f3;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 1);
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #005bb5;
+}
+
+.tasksContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.task {
+    background-color: #CFC3C3;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.taskTitle {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.taskDescription {
+    margin: 0.5rem 0 0;
+    white-space: pre-wrap; /* Allow for line breaks in description */
+}
+
+.md{
+    display: flex;
+    justify-content: space-between;
+}
+.deleteButton{
+   cursor: pointer;
+}
+.uploadbtn{
+    cursor: pointer;
+}
+
+.title2 {
+    text-align: center;
+    opacity: 0.5;
+   padding: 0.1rem;
+    box-shadow: 0 2px 3px;
+  }
+
+

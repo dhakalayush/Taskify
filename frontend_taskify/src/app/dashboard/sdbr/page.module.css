@@ -30,6 +30,7 @@
   width: 50%;
   text-align: center;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
 }
 .item1:hover,
 .item2:hover,

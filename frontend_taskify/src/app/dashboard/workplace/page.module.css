@@ -1,0 +1,44 @@
+
+.title {
+    text-align: center;
+    opacity: 0.5;
+    padding: 0.5rem;
+    box-shadow: 0 5px 5px;
+  }
+
+.container2
+  {
+    margin: 1rem;
+    border-radius: 5px;
+    height: 18rem;
+    box-shadow: 0 2px 5px;
+    background-color: #ECF8FB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+   
+  }
+
+.container3
+  {
+    margin: 1rem;
+    border-radius: 5px;
+    height: 18rem;
+   box-shadow: 0 2px 5px;
+   background-color: #eacecf;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  
+ 
+ 
+  }
+  .workplace1,
+  .workplace2{
+   font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+   
+  }

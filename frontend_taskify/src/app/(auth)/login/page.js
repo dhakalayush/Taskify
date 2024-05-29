@@ -1,7 +1,7 @@
 "use client"; // This is a client component
 
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "/home/ayush/Documents/task/taskifyrs/frontend_taskify/src/app/axiosSetup"; // Import axios setup file
 import styles from "./page.module.css";
 import { useRouter } from 'next/navigation';
 import { isAuthenticated } from '../auth.js';
@@ -35,7 +35,6 @@ const Home = () => {
         }
       });
   }
-
 
   return (
     <div className={styles.main}>
