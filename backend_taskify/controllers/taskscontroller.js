@@ -33,8 +33,14 @@ exports.addtasks = (req, res) => {
 
 exports.seetasks = (req, res) => {
   const { title, description, date, status } = req.body;
+  const authHeader = req.headers['authorization'];
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+  }
 
-  const token = req.headers['authorization']; // Assuming token is sent in the Authorization header
+  const token = authHeader.split(' ')[1];
+
+  //const token = req.headers['authorization']; // Assuming token is sent in the Authorization header
 
   let sql = "SELECT title, description, date, status FROM tasks";
 

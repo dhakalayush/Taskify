@@ -38,19 +38,27 @@ const Priority = () => {
 
   return (
     <div>
-      <h1>Priority Events</h1>
-      {error ? (
-        <p>Error: {error}</p>
-      ) : responseData ? (
-        <div>
-          <p>Data received:</p>
-          <pre>{JSON.stringify(responseData, null, 2)}</pre>
-        </div>
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-  );
+  
+    {error ? (
+      <p>Error: {error}</p>
+    ) : responseData ? (
+      <div>
+        
+        <ul>
+          {responseData.tasks.map((task, index) => (
+            <li key={index}>
+              <strong>Title:</strong> {task.title} <br />
+              <strong>Date:</strong> {task.date}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ) : (
+      <p>Loading...</p>
+    )}
+  </div>
+);
 };
+ 
 
 export default Priority;

@@ -1,0 +1,42 @@
+.titlebox{
+    padding: 0.5rem;
+    margin: 0.5rem;
+  
+   
+ 
+   box-shadow: 0 5px 5px;
+    text-align: center;
+    opacity: 0.5;
+}
+
+.icon{
+    float: right;
+    cursor: pointer;
+}
+.carditems{
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    gap: 30px;
+    margin: 2rem;
+  
+}
+.card{
+    
+    border-width: 1px; 
+     height: 175px;
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #EFE3D0;
+}
+.details{
+    display: flex;
+    flex-direction: column;
+   padding: 0.5rem;
+   font-size: x-large;
+   gap: 10px;
+}
+.number{
+    font-size:xx-large;
+}
