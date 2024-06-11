@@ -1,0 +1,58 @@
+/* page.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.test {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.taskForm {
+  max-width: 400px;
+  width: 100%;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.inputField,
+.selectField {
+  width: calc(100% - 20px); /* Adjusted width for textboxes */
+  padding: 10px; /* Increased padding for textboxes */
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.selectField {
+  appearance: none;
+}
+
+.button {
+  background-color: #87ceeb; /* Sky blue color */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 165px; /* Increased padding for button and set width */
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #6495ed; /* Lighter sky blue on hover */
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+}

@@ -3,12 +3,14 @@
 import styles from "./page.module.css";
 import React, { useState } from "react";
 import axios from "axios";
+import { useRouter } from 'next/navigation';
 
 const Home = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [fullname, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const router = useRouter();
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -19,7 +21,16 @@ const Home = () => {
         username,
         password,
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        // Clear input fields
+        setFullName("");
+        setEmail("");
+        setUsername("");
+        setPassword("");
+        // Redirect to login page
+        router.push('/login');
+      })
       .catch((err) => console.log(err));
   }
 
@@ -31,7 +42,7 @@ const Home = () => {
           Organize your work and life,finally
         </h1>
         <p className={styles.left_btm}>
-          Become focused,organized, and calm with TASKify.
+          Become focused, organized, and calm with TASKify.
           <br />
           The world's #1 user-friendly Task Manager.
         </p>
@@ -46,26 +57,26 @@ const Home = () => {
             Use one of the services to continue with TASKify
           </h3>
 
-          {/* Username Input */}
+          {/* Signup Form */}
           <form onSubmit={handleSubmit}>
-            {/* Password Input */}
-            <label htmlFor="full name">Full Name</label>
+            <label htmlFor="fullname">Full Name</label>
             <input
               type="text"
               id="fullname"
-              name="full name"
+              name="fullname"
               placeholder="Full Name"
+              value={fullname}
               required
               onChange={(e) => setFullName(e.target.value)}
             />
 
-            {/* Password Input */}
             <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
               name="email"
               placeholder="Email"
+              value={email}
               required
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -76,42 +87,41 @@ const Home = () => {
               id="username"
               name="username"
               placeholder="Username"
+              value={username}
               required
               onChange={(e) => setUsername(e.target.value)}
             />
 
-            {/* Password Input */}
             <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
               name="password"
               placeholder="Password"
+              value={password}
               required
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            {/* Password Input */}
-            <label htmlFor="password">Confirm Password</label>
+            <label htmlFor="repassword">Confirm Password</label>
             <input
               type="password"
               id="repassword"
-              name="password"
-              placeholder="Password"
+              name="repassword"
+              placeholder="Confirm Password"
+              required
             />
-            {/* Login Button */}
+
             <button type="submit" className={styles.pbtn}>
               SIGNUP
             </button>
           </form>
 
-          {/* Sign Up Link */}
           <p>
             Already have an account? <a href="/login">Login</a>
           </p>
         </div>
 
-        {/* Terms and Privacy */}
         <p className={styles.btmtxt}>
           By continuing, you agree to TASKify's <u>Terms of Use</u>
           <br />
@@ -121,4 +131,5 @@ const Home = () => {
     </div>
   );
 };
+
 export default Home;

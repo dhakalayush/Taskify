@@ -39,6 +39,7 @@
 .profile {
   display: flex;
   flex-direction: column;
+  margin-left: 1400px;
 }
 .icons {
   display: flex;

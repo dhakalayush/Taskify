@@ -3,11 +3,14 @@ const db = require("../database/database");
 
 exports.addworkplace = (req, res) => {
     const { title, description} = req.body; 
-    const token = req.headers['authorization'];
 
-    if (!token) {
-        return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+    const authHeader = req.headers['authorization'];
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
     }
+  
+    const token = authHeader.split(' ')[1];
+
     jwt.verify(token, 'your_secret_key', (err, decoded) => {
         if (err) {
             return res.status(401).json({ error: 'Invalid token' });
@@ -32,11 +35,13 @@ exports.addworkplace = (req, res) => {
 
 exports.addmembers = (req, res) => {
     const { member_id, workplace_id } = req.body;
-    const token = req.headers['authorization'];
 
-    if (!token) {
-        return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+    const authHeader = req.headers['authorization'];
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
     }
+  
+    const token = authHeader.split(' ')[1];
 
     jwt.verify(token, 'your_secret_key', (err, decoded) => {
         if (err) {
@@ -71,16 +76,21 @@ exports.addmembers = (req, res) => {
 };
 
 exports.seeworkplace = (req, res) => {
-    const { title, description, team_members } = req.body;
+    const { id, title, description, team_members } = req.body;
     
-    const token = req.headers['authorization'];
+   const authHeader = req.headers['authorization'];
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+    }
+  
+    const token = authHeader.split(' ')[1];
 
-    let sql = "SELECT title, description, team_members FROM workplace_info WHERE";
 
     jwt.verify(token, 'your_secret_key', (err, decoded) => {
         if (err) {
             return res.status(401).json({ error: 'Invalid token' });
         }
+        let sql = "SELECT id, title, description, team_members FROM workplace_info WHERE";
 
         const userId = decoded.id;
 
@@ -88,7 +98,7 @@ exports.seeworkplace = (req, res) => {
         
         if (title || description || team_members) {
             sql += " AND";
-
+            if (id) sql += ` id = '${id}'`;
             if (title) sql += ` title = '${title}'`;
             if (description) sql += ` description = '${description}'`;
             if (team_members) sql += ` team_members = '${team_members}'`;
@@ -107,16 +117,18 @@ exports.seeworkplace = (req, res) => {
 
 exports.deleteworkplace = (req, res) => {
     const { workplace_id } = req.body;
-    const token = req.headers['authorization'];
-
-    if (!token) {
-        return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+    const authHeader = req.headers['authorization'];
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
     }
+  
+    const token = authHeader.split(' ')[1];
+
 
     jwt.verify(token, 'your_secret_key', (err, decoded) => {
-        if (err) {
-            return res.status(401).json({ error: "Invalid token" });
-        }
+      if (err) {
+        return res.status(401).json({ error: 'Invalid token' });
+      }
 
         const userId = decoded.id;
 

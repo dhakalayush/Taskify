@@ -26,7 +26,8 @@ const verifyToken = (req, res, next) => {
 router.post("/login", controller.login);
 router.post("/signup", controller.signup);
 router.post("/update_password", controller.updatePassword);
-router.get("/delete_profile", controller.deleteProfile);
+router.put("/delete_profile", controller.deleteProfile);
+router.get("/see_details", controller.seedetails);
 
 // Example of protected route using JWT middleware
 router.get("/protected-route", verifyToken, (req, res) => {
@@ -35,7 +36,8 @@ router.get("/protected-route", verifyToken, (req, res) => {
 
 router.post("/add_tasks", taskcontroller.addtasks);
 router.get("/see_tasks", taskcontroller.seetasks);
-router.get("/delete_tasks", taskcontroller.deleteTasks);
+router.post("/delete_tasks", taskcontroller.deleteTasks);
+router.post('/update_status', taskcontroller.updatetasks);
 
 router.post("/add_workplace", workplacecontroller.addworkplace);
 router.get("/see_workplace", workplacecontroller.seeworkplace);

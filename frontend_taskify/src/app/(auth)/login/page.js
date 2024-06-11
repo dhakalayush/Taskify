@@ -1,7 +1,7 @@
 "use client"; // This is a client component
 
 import React, { useState, useEffect } from "react";
-import axios from "/home/ayush/Documents/task/taskifyrs/frontend_taskify/src/app/axiosSetup"; // Import axios setup file
+import axios from "/home/anish/Documents/Projects/5th Semester Project/Taskify/frontend_taskify/src/app/axiosSetup"; // Import axios setup file
 import styles from "./page.module.css";
 import { useRouter } from 'next/navigation';
 import { isAuthenticated } from '../auth.js';

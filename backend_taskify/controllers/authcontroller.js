@@ -82,11 +82,13 @@ exports.signup = (req, res) => {
 
 exports.updatePassword = (req, res) => {
   const { password } = req.body;
-  const token = req.headers['authorization'];
-
-  if (!token) {
+   const authHeader = req.headers['authorization'];
+  
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
   }
+
+  const token = authHeader.split(' ')[1];
 
   jwt.verify(token, 'your_secret_key', (err, decoded) => {
     if (err) {
@@ -95,7 +97,6 @@ exports.updatePassword = (req, res) => {
 
     const userId = decoded.id;
 
-    // Hash the new password before storing it
     bcrypt.hash(password, 10, (hashErr, hashedPassword) => {
       if (hashErr) {
         console.error("Hashing Error: ", hashErr);
@@ -116,11 +117,13 @@ exports.updatePassword = (req, res) => {
 };
 
 exports.deleteProfile = (req,res)=>{
-  const token = req.headers['authorization'];
-
-  if(!token){
-    return res.status(401).json({error:"Unauthorized", message:"JWT token is required"});
+  const authHeader = req.headers['authorization'];
+  
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
   }
+
+  const token = authHeader.split(' ')[1];
 
   jwt.verify(token, 'your_secret_key', (err, decoded)=>{
     if(err){
@@ -140,3 +143,49 @@ exports.deleteProfile = (req,res)=>{
     })
   })
 }
+
+exports.seedetails = (req, res) => {
+  const{fullname, email, username} = req.body;
+
+  const authHeader = req.headers['authorization'];
+  
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+  }
+
+  const token = authHeader.split(' ')[1];
+
+  jwt.verify(token, 'your_secret_key', (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
+
+    const userId = decoded.id;
+
+    let sql = 'SELECT * FROM user_signup where id = ?';
+    const queryParams = [userId];
+
+    if(fullname || email || username){
+      if(fullname){
+        sql += "AND Full_Name = ?";
+        queryParams.push(fullname);
+      }
+      if(email){
+        sql += "AND Email = ?";
+        queryParams.push(email);
+      }
+      if(username){
+        sql+="AND Username = ?";
+        queryParams.push(username);
+      }
+    }
+    db.query(sql, queryParams, (err, result)=>{
+      if(err){
+        console.error("MySQL Error: ", err);
+        return res.status(500).json({error: "Internal Server Error"});
+      }
+
+      return res.json({tasks: result});
+    });
+  });
+};
