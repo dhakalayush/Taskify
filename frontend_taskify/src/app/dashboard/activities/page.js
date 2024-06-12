@@ -178,8 +178,9 @@ export default function Activities() {
       })
       .then((response) => {
         console.log(`Task ${taskId} deleted successfully`);
-        setSelectedTask(null); // Close the modal after deletion
         router.push('/dashboard/activities');
+        setSelectedTask(null); // Close the modal after deletion
+
       })
       .catch((error) => {
         if (error.response && error.response.data && error.response.data.error) {

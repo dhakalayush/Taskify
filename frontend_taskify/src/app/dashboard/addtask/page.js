@@ -2,13 +2,13 @@
 import { useState } from 'react';
 import axios from 'axios'; // Import axios if not already imported
 import styles from './page.module.css';
-
+import {useRouter} from 'next/navigation';
 export default function AddTask() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [status, setStatus] = useState('To Do'); // Default status
   const [error, setError] = useState('');
-
+  const router = useRouter();
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title.trim() || !description.trim()) {
@@ -19,10 +19,11 @@ export default function AddTask() {
     try {
       const response = await axios.post("http://localhost:8080/add_tasks", { title, description, date, status });
       console.log('Task added successfully:', response.data);
-      // Optionally, you can redirect the user or show a success message here
+      setTitle('');
+      setDescription('');
+      router.push('/dashboard/activities');
     } catch (error) {
       console.error('Error adding task:', error);
-      // Handle error: show an error message or log it
     }
   };
 

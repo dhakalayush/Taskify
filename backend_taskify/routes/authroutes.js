@@ -28,6 +28,7 @@ router.post("/signup", controller.signup);
 router.post("/update_password", controller.updatePassword);
 router.put("/delete_profile", controller.deleteProfile);
 router.get("/see_details", controller.seedetails);
+router.get('/getalldata', controller.getalldata);
 
 // Example of protected route using JWT middleware
 router.get("/protected-route", verifyToken, (req, res) => {
@@ -38,11 +39,13 @@ router.post("/add_tasks", taskcontroller.addtasks);
 router.get("/see_tasks", taskcontroller.seetasks);
 router.post("/delete_tasks", taskcontroller.deleteTasks);
 router.post('/update_status', taskcontroller.updatetasks);
+router.get("/put_data", taskcontroller.putdata);
 
 router.post("/add_workplace", workplacecontroller.addworkplace);
 router.get("/see_workplace", workplacecontroller.seeworkplace);
 router.post("/add_members", workplacecontroller.addmembers);
 router.get("/delete_workplace", workplacecontroller.deleteworkplace);
+router.get("/see_members", workplacecontroller.seemembers);
 
 router.post("/add_workplace_tasks", workplaccetaskcontroller.addwtasks);
 router.get("/see_workplace_tasks", workplaccetaskcontroller.seewtasks);

@@ -8,3 +8,61 @@
 .contents{
     flex: 0.5;  
 }
+.taskButton {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.taskButton:hover {
+  background-color: #e0e0e0;
+}
+
+/* page.module.css */
+.container {
+  padding: 20px;
+}
+
+.button {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.Modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+}
+
+.Modal h2 {
+  margin-top: 0;
+}
+
+.Modal button {
+  margin-top: 20px;
+}
+

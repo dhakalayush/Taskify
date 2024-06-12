@@ -189,3 +189,43 @@ exports.seedetails = (req, res) => {
     });
   });
 };
+
+
+exports.getalldata = (req,res)=>{
+  const{id, name} = req.body;
+
+  const authHeader = req.headers['authorization'];
+  
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+  }
+
+  const token = authHeader.split(' ')[1];
+
+  jwt.verify(token, 'your_secret_key', (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: "Invalid token" });
+    }
+
+    let sql = 'SELECT * FROM user_signup';
+    const queryParams = [];
+    if(id){
+      sql += "AND id = ?";
+      queryParams.push(id);
+    }
+    if(name){
+        sql += "AND Full_Name = ?";
+        queryParams.push(name);
+      }
+    
+    db.query(sql, queryParams, (err, result)=>{
+      if(err){
+        console.error("MySQL Error: ", err);
+        return res.status(500).json({error: "Internal Server Error"});
+      }
+
+      return res.json({tasks: result});
+
+  });
+});
+};

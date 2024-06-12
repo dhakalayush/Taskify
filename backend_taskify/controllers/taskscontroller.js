@@ -16,7 +16,7 @@ exports.addtasks = (req, res) => {
       return res.status(401).json({ error: 'Invalid token' });
     }
 
-    const userId = decoded.id; // Assuming the id is stored in the token payload
+    const userId = decoded.id;
 
     const sql = "INSERT INTO tasks (title, description, date, status, userid) VALUES (?, ?, ?, ?, ?)";
     db.query(sql, [title, description, date, status, userId], (insertErr, result) => {
@@ -165,5 +165,83 @@ exports.updatetasks = (req, res) => {
       });
     });
   });
-}
+};
+
+exports.putdata = (req, res) => {
+  const { id, title, description, date, status } = req.body;
+  const authHeader = req.headers['authorization'];
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+  }
+
+  const token = authHeader.split(' ')[1];
+
+  jwt.verify(token, 'your_secret_key', (err, decoded) => {
+      if (err) {
+          return res.status(401).json({ error: 'Invalid token' });
+      }
+
+      const userId = decoded.id;
+      const sql = "SELECT status FROM tasks WHERE userid = ?";
+      db.query(sql, [userId], (selectErr, selectResults) => {
+          if (selectErr) {
+              console.error("MySQL Error: ", selectErr);
+              return res.status(500).json({ error: "Internal Server Error" });
+          }
+
+          const todoTasks = selectResults.filter(task => task.status === "To Do");
+          const inProgressTasks = selectResults.filter(task => task.status === "In Progress");
+          const completedTasks = selectResults.filter(task => task.status === "Completed");
+
+          const numOfTodoTasks = todoTasks.length;
+          const numOfInProgressTasks = inProgressTasks.length;
+          const numOfCompletedTasks = completedTasks.length;
+
+          const today = new Date().toISOString().slice(0, 10);
+
+          // Check if the date already exists for the user
+          const checkSql = "SELECT * FROM numberoftask WHERE date = ? AND userId = ?";
+          db.query(checkSql, [today, userId], (checkErr, checkResults) => {
+              if (checkErr) {
+                  console.error("MySQL Error: ", checkErr);
+                  return res.status(500).json({ error: "Internal Server Error" });
+              }
+
+              if (checkResults.length > 0) {
+                  // Update the existing record
+                  const updateSql = `
+                      UPDATE numberoftask
+                      SET numberoftodo = ?, numberofinprogress = ?, numberofcompleted = ?
+                      WHERE date = ? AND userId = ?
+                  `;
+                  const updateParams = [numOfTodoTasks, numOfInProgressTasks, numOfCompletedTasks, today, userId];
+                  db.query(updateSql, updateParams, (updateErr, updateResult) => {
+                      if (updateErr) {
+                          console.error("MySQL Error: ", updateErr);
+                          return res.status(500).json({ error: "Internal Server Error" });
+                      }
+
+                      return res.json({ message: "Task counts updated", counts: { numOfTodoTasks, numOfInProgressTasks, numOfCompletedTasks } });
+                  });
+              } else {
+                  // Insert a new record
+                  const insertSql = `
+                      INSERT INTO numberoftask (date, numberoftodo, numberofinprogress, numberofcompleted, userId)
+                      VALUES (?, ?, ?, ?, ?)
+                  `;
+                  const insertParams = [today, numOfTodoTasks, numOfInProgressTasks, numOfCompletedTasks, userId];
+                  db.query(insertSql, insertParams, (insertErr, insertResult) => {
+                      if (insertErr) {
+                          console.error("MySQL Error: ", insertErr);
+                          return res.status(500).json({ error: "Internal Server Error" });
+                      }
+
+                      return res.json({ message: "Task counts inserted", counts: { numOfTodoTasks, numOfInProgressTasks, numOfCompletedTasks } });
+                  });
+              }
+          });
+      });
+  });
+};
+
 

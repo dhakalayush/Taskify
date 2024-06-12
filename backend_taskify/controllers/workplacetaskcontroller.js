@@ -4,11 +4,12 @@ const { deleteTasks } = require("./taskscontroller");
 
 exports.addwtasks = (req, res) => {
     const { title, description, status, date, workplace_id } = req.body;
-    const token = req.headers['authorization'];
+    const authHeader = req.headers['authorization'];
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+  }
 
-    if (!token) {
-        return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
-    }
+  const token = authHeader.split(' ')[1];
 
     jwt.verify(token, 'your_secret_key', (err, decoded) => {
         if (err) {
@@ -40,14 +41,16 @@ exports.addwtasks = (req, res) => {
         });
     });
 };
+
 exports.seewtasks = (req, res) => {
-    const { title, description, status, date, workplace_id } = req.body;
-    const token = req.headers['authorization'];
-
-    if (!token) {
-        return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+    const { title, description, status, date} = req.body;
+    const authHeader = req.headers['authorization'];
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
     }
-
+  
+    const token = authHeader.split(' ')[1];
+  
     jwt.verify(token, 'your_secret_key', (err, decoded) => {
         if (err) {
             return res.status(401).json({ error: "Invalid token" });
@@ -56,7 +59,7 @@ exports.seewtasks = (req, res) => {
         const userId = decoded.id;
 
         const sql1 = "SELECT differentiate FROM workplace_info WHERE id = ?";
-        db.query(sql1, [workplace_id], (selectErr1, selectResult1) => {
+        db.query(sql1, [20], (selectErr1, selectResult1) => {
             if (selectErr1) {
                 console.error("MySQL Error: ", selectErr1);
                 return res.status(500).json({ error: "Internal Server Error" });
@@ -86,7 +89,7 @@ exports.seewtasks = (req, res) => {
                 }
 
                 let sql = "SELECT title, description, status, date FROM workplace_tasks WHERE workplace_id = ?";
-                const params = [workplace_id];
+                const params = [20];
 
                 if (title) {
                     sql += " AND title = ?";
