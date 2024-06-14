@@ -45,12 +45,13 @@ export default function Workplace() {
       {error ? (
         <p>Error: {error}</p>
       ) : responseData ? (
-        <div>
+        <div className={styles.container2}>
+          <p className={styles.additionalText}> Are You trying to Work?</p>
           <ul>
             {responseData.workplaces.map((workplace, index) => (
               <li key={index}>
                 <Link href={`/dashboard/workplace/home`} passHref>
-                  <span className={styles.link}>{workplace.title}</span>
+                  <span className={styles.workplace1}>{workplace.title}</span>
                 </Link>
                 <br />
               </li>

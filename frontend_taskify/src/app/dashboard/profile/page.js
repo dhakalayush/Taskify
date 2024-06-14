@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
-import axios from "/home/anish/Documents/Projects/5th Semester Project/Taskify/frontend_taskify/src/app/axiosSetup"; // Import axios setup file
+import axios from "/home/ayush/Documents/GitHub/taskifyrs/frontend_taskify/src/app/axiosSetup"; // Import axios setup file // Import axios setup file
 import styles from './page.module.css';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { useRouter } from 'next/navigation';

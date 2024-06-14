@@ -30,18 +30,6 @@
       "static/css/app/dashboard/layout.css",
       "static/chunks/app/dashboard/layout.js"
     ],
-    "/dashboard/activities/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/dashboard/activities/page.css",
-      "static/chunks/app/dashboard/activities/page.js"
-    ],
-    "/dashboard/addtask/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/dashboard/addtask/page.css",
-      "static/chunks/app/dashboard/addtask/page.js"
-    ],
     "/dashboard/chart/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -66,16 +54,23 @@
       "static/css/app/dashboard/workplace/home/layout.css",
       "static/chunks/app/dashboard/workplace/home/layout.js"
     ],
+    "/dashboard/workplace/home/teamembers/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dashboard/workplace/home/teamembers/page.css",
+      "static/chunks/app/dashboard/workplace/home/teamembers/page.js"
+    ],
+    "/dashboard/activities/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dashboard/activities/page.css",
+      "static/chunks/app/dashboard/activities/page.js"
+    ],
     "/dashboard/workplace/home/addtask/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/dashboard/workplace/home/addtask/page.css",
       "static/chunks/app/dashboard/workplace/home/addtask/page.js"
-    ],
-    "/dashboard/workplace/home/teamembers/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/dashboard/workplace/home/teamembers/page.js"
     ],
     "/dashboard/profile/page": [
       "static/chunks/webpack.js",

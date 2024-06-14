@@ -14,7 +14,7 @@ export default function Workplace() {
                     <Link href="/dashboard/workplace/home" className={styles.item}>  Home </Link>
                     <Link href="/dashboard/workplace/home/addtask" className={styles.item}>Add Tasks</Link>
                     <Link href="/dashboard/workplace/home/teamembers" className={styles.item}>  Team Members </Link>
-                    <Link href="/dashboard/workplace/home/charts" className={styles.item}>  Charts </Link>
+                   
                 </div>
             </div>
         </div>

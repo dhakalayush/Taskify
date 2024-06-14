@@ -27,7 +27,7 @@ export default function Workplace1({ workplaceId }) {
             alert('Authentication token not found');
             return;
         }
-        const date = new Date().toISOString(); // Get current date in ISO format
+        const date = new Date().toISOString().slice(0, 10);// Get current date in ISO format
         wId = 20;
         const payload = JSON.stringify({ title: title, description: description, status: newStatus, date, workplace_id: wId });
         console.log('Adding tasks with payload:', payload);

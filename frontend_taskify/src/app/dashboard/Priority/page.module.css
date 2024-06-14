@@ -1,0 +1,105 @@
+.taskContainer {
+    max-height: 330px; /* Increased the height to show more tasks initially */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    -ms-overflow-style: none;  /* Hide scrollbar in IE and Edge */
+    scrollbar-width: none;  /* Hide scrollbar in Firefox */
+  }
+  
+  .taskContainer::-webkit-scrollbar {
+    display: none; /* Hide scrollbar in WebKit browsers */
+  }
+  
+  .taskList {
+    list-style-type: none; /* Remove list bullets */
+    padding: 0; /* Remove default padding */
+    margin: 10px; /* Remove default margin */
+  }
+  
+  .taskBox {
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px; /* Padding inside the box */
+    margin-bottom: 10px; /* Space between boxes */
+    background-color: #f9f9f9; /* Background color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle 3D effect */
+    display: flex; /* Flexbox to align items */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #70b1c7; /* Blue color */
+    border-radius: 50%; /* Make it a circle */
+    margin-right: 10px; /* Space between bullet and content */
+  }
+  
+  .taskContent {
+    display: flex;
+    flex-direction: column; /* Stack title and date vertically */
+  }
+  
+  .taskTitle,
+  .taskDate {
+    display: block; /* Ensure elements are displayed in block format */
+    margin-bottom: 5px; /* Space between title and date */
+  }
+  
+  .taskTitle {
+    font-weight: bold; /* Bold text for title */
+  }
+  
+  .taskDate {
+    color: gray; /* Gray text for date */
+  }
+  
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  
+  align-items: center;
+
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+
+  border-radius: 20px;
+  position: relative;
+  max-width: 500px;
+background-color: #555555;
+  width: 100%;
+
+ 
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+color: white;
+
+  font-size: 24px;
+  cursor: pointer;
+}
+.title{
+  color: black;
+  background-color: white;
+  width: 100%;
+  border-radius: 10px;
+}
+.details{
+  border-radius: 10px;
+  padding: 5px;
+  color: black;
+  background-color: #f8eeee;
+}

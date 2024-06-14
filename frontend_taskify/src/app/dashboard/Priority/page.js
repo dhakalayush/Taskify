@@ -1,10 +1,12 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import styles from './page.module.css'; // Import the CSS module
 
 const Priority = () => {
   const [responseData, setResponseData] = useState(null);
   const [error, setError] = useState(null);
+  const [selectedTask, setSelectedTask] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,29 +38,51 @@ const Priority = () => {
     fetchData();
   }, []);
 
+  const handleTaskClick = (task) => {
+    setSelectedTask(task);
+  };
+
+  const closeModal = () => {
+    setSelectedTask(null);
+  };
+
   return (
     <div>
-  
-    {error ? (
-      <p>Error: {error}</p>
-    ) : responseData ? (
-      <div>
-        
-        <ul>
-          {responseData.tasks.map((task, index) => (
-            <li key={index}>
-              <strong>Title:</strong> {task.title} <br />
-              <strong>Date:</strong> {task.date}
-            </li>
-          ))}
-        </ul>
-      </div>
-    ) : (
-      <p>Loading...</p>
-    )}
-  </div>
-);
+      {error ? (
+        <p>Error: {error}</p>
+      ) : responseData ? (
+        <div className={styles.taskContainer}>
+          <ul className={styles.taskList}>
+            {responseData.tasks.map((task, index) => (
+              <li key={index} className={styles.taskBox} onClick={() => handleTaskClick(task)}>
+                <span className={styles.bullet}></span>
+                <div className={styles.taskContent}>
+                  <span className={styles.taskTitle}><strong>Title:</strong> {task.title}</span>
+                  <span className={styles.taskDate}><strong>Date:</strong> {task.date}</span>
+                </div>
+              </li>
+            )).reverse()} {/* Reverse the order to display the latest tasks first */}
+          </ul>
+          {selectedTask && (
+            <div className={styles.modal}>
+              <div className={styles.modalContent}>
+                <span className={styles.closeButton} onClick={closeModal}>&times;</span>
+                <h2 className={styles.title}>Task Details</h2>
+                <div className={styles.details}>
+                <p><strong>Title:      </strong> {selectedTask.title}</p>
+                <p><strong>Description:</strong> {selectedTask.description}</p>
+                <p><strong>Date:</strong> {selectedTask.date}</p>
+                <p><strong>Status:</strong> {selectedTask.status}</p>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
+    </div>
+  );
 };
- 
 
 export default Priority;

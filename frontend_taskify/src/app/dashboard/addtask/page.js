@@ -15,7 +15,7 @@ export default function AddTask() {
       setError('Please fill in all fields.');
       return;
     }
-    const date = new Date().toISOString(); // Get current date in ISO format
+    const date = new Date().toISOString().slice(0, 10); // Get current date in ISO format
     try {
       const response = await axios.post("http://localhost:8080/add_tasks", { title, description, date, status });
       console.log('Task added successfully:', response.data);

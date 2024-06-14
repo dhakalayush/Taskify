@@ -1,8 +1,9 @@
-"use client";
+'use client';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { FaPlus } from 'react-icons/fa';
 import Modal from 'react-modal';
+import styles from "./page.module.css";
 
 export default function TeamMembers() {
   const [responseData, setResponseData] = useState(null);
@@ -120,12 +121,12 @@ export default function TeamMembers() {
   };
 
   return (
-    <div style={{ position: 'relative' }}>
-      <div style={{ position: 'absolute', top: '40px', left: '1200px', zIndex: 999 }} onClick={handleModalToggle}>
+    <div className={styles.container}>
+      <h1>Team Members</h1>
+      <div className={styles.plusIcon} onClick={handleModalToggle}>
         <FaPlus size={16} />
       </div>
-      <h1>Team Members</h1>
-      <Modal isOpen={isModalOpen} onRequestClose={handleModalToggle} style={{ content: { width: '30%', height: '30%', margin: "10%", marginLeft: "30%" } }}>
+      <Modal isOpen={isModalOpen} onRequestClose={handleModalToggle} className={styles.modal}>
         <h2>Add Members</h2>
         {error ? (
           <p>Error: {error}</p>
@@ -147,8 +148,8 @@ export default function TeamMembers() {
       {error ? (
         <p>Error: {error}</p>
       ) : responseData ? (
-        <div>
-          <table>
+        <div className={styles.box}>
+          <table className={styles.table}>
             <thead>
               <tr>
                 <th>Name</th>

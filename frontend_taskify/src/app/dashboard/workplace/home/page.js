@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import Modal from 'react-modal';
+
 import styles from "./page.module.css";
 
 export default function Workplace() {
@@ -51,34 +51,38 @@ export default function Workplace() {
 
     return (
         <div className={styles.container}>
+             <div className={styles.heading}>
+             <h1>Tasks</h1>
+             </div>
             {error ? (
                 <p>Error: {error}</p>
             ) : responseData ? (
-                <div>
+                <div className={styles.body}>
                     <ul>
                         {responseData.tasks.map((task, index) => (
-                            <li key={index}>
-                                <button onClick={() => openModal(task)}>
+                            <li key={index} className={styles.container1}>
+                                <button className={styles.tt} onClick={() => openModal(task)}>
                                     {task.title}
                                 </button>
                             </li>
                         ))}
                     </ul>
-                    <Modal
-                        isOpen={modalIsOpen}
-                        onRequestClose={closeModal}
-                        contentLabel="Task Details"
-                    >
+                   
                         {selectedTask && (
-                            <div>
-                                <h2>{selectedTask.title}</h2>
+                            <div className={styles.overlay}>
+                                <div className={styles.details}>
+                                <h2 className={styles.title}>{selectedTask.title}</h2>
+                                <div className={styles.des}>
                                 <p><strong>Description:</strong> {selectedTask.description}</p>
                                 <p><strong>Status:</strong> {selectedTask.status}</p>
                                 <p><strong>Date:</strong> {selectedTask.date}</p>
+                                </div>
                                 <button onClick={closeModal}>Close</button>
+                                
+                            </div>
                             </div>
                         )}
-                    </Modal>
+                
                 </div>
             ) : (
                 <p>Loading...</p>

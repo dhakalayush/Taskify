@@ -40,6 +40,7 @@ router.get("/see_tasks", taskcontroller.seetasks);
 router.post("/delete_tasks", taskcontroller.deleteTasks);
 router.post('/update_status', taskcontroller.updatetasks);
 router.get("/put_data", taskcontroller.putdata);
+router.get("/see_data",taskcontroller.seedata);
 
 router.post("/add_workplace", workplacecontroller.addworkplace);
 router.get("/see_workplace", workplacecontroller.seeworkplace);

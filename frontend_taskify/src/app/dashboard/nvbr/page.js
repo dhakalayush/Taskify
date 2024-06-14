@@ -1,6 +1,6 @@
 "use client";
 import styles from "./page.module.css";
-import { MdNotifications, MdSearch, MdChat } from "react-icons/md";
+
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/navigation'; // Import useRouter for redirection
 

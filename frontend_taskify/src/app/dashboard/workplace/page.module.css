@@ -1,45 +1,88 @@
+.container1 {
+  /* Styles for container1 */
+}
+
+.container2 {
+  margin: 2.5rem auto;
+  border-radius: 5px;
+  height: 70vh; /* Adjust height as needed */
+  width: 50vw; /* Adjust width as needed */
+  box-shadow: 0 2px 5px;
+  background-image: url("/img/workplace.avif");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-color: #fefeff;
+  background-size: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.additionalText {
+  position: absolute;
+  top: 2vh;
+  left: 2vw;
+  font-size: 2vw; /* Adjust font size using vw */
+  font-weight: bold;
+  color: #555;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add text shadow for better visibility */
+}.workplace1 {
+  position: absolute;
+  bottom: 2vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5vw; /* Adjust font size using vw */
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: underline;
+  transition: color 0.3s, border-color 0.3s; /* Add transition for smoother hover effect */
+  border: 2px solid transparent; /* Add border for better appearance */
+  padding: 0.5rem 1rem; /* Add padding for better spacing */
+  border-radius: 5px; /* Add border radius for rounded corners */
+}
+
+.workplace1:hover {
+  color: #007bff; /* Change color on hover */
+  text-decoration: none; /* Remove underline on hover */
+  border-color: black; /* Change border color on hover */
+}
+
 
 .title {
-    text-align: center;
-    opacity: 0.5;
-   padding: 0.1rem;
-    margin: 0.3rem;
-    box-shadow: 0 5px 5px;
-  }
+  opacity: 0.5;
+  padding: 0.1rem;
+  margin: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 5px;
+  position: relative;
+}
 
-.container2
-  {
-    margin: 1rem;
-    border-radius: 5px;
-    height: 18rem;
-    box-shadow: 0 2px 5px;
-    background-color: #ECF8FB;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-   
-  }
+.dots {
+  position: absolute;
+  right: 1vw;
+  font-size: 2vw;
+  cursor: pointer;
+  color: #555;
+}
 
-.container3
-  {
-    margin: 1rem;
-    border-radius: 5px;
-    height: 18rem;
-   box-shadow: 0 2px 5px;
-   background-color: #eacecf;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-  
- 
- 
-  }
-  .workplace1,
-  .workplace2{
-   font-size: 1.5rem;
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
-   
-  }
+.dropdownBtn {
+  position: absolute;
+  right: 1vw;
+  top: 2vh;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 1vh 2vw; /* Adjust padding using vw and vh */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdownBtn:hover {
+  background-color: #0056b3;
+}

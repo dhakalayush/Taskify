@@ -243,5 +243,55 @@ exports.putdata = (req, res) => {
       });
   });
 };
+exports.seedata = (req,res) => {
+  const {id, date, numberoftodo, numberofInProgress, numberofCompleted} = req.body;
+  const authHeader = req.headers['authorization'];
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: "Unauthorized", message: "JWT token is required" });
+  }
 
+  const token = authHeader.split(' ')[1];
+
+  jwt.verify(token, 'your_secret_key', (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ error: 'Invalid token' });
+    }
+
+    const userId = decoded.id;
+    const sql = "SELECT * FROM numberoftask WHERE userId = ?";
+    const queryParams = [userId];
+
+    if (date || numberoftodo || numberofInProgress || numberofCompleted) {
+      if (id) {
+        sql += " AND id = ?";
+        queryParams.push(id);
+      }
+      if (date) {
+        sql += " AND date = ?";
+        queryParams.push(date);
+      }
+      if (numberoftodo) {
+        sql += " AND numberoftodo = ?";
+        queryParams.push(numberoftodo);
+      }
+      if (numberofInProgress) {
+        sql += " AND numberofinprogress = ?";
+        queryParams.push(numberofInProgress);
+      }
+      if (numberofCompleted) {
+        sql += " AND numberofcompleted = ?";
+        queryParams.push(numberofInProgress);
+      }
+    }
+
+    db.query(sql, queryParams, (err, result) => {
+      if (err) {
+        console.error("MySQL Error:", err);
+        return res.status(500).json({ error: "Internal Server Error" });
+      }
+
+      return res.json({ tasks: result });
+  });
+});
+};
 

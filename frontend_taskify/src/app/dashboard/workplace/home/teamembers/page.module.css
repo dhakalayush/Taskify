@@ -1,0 +1,71 @@
+/* page.module.css */
+
+.container {
+    position: relative;
+    
+  }
+  
+  .plusIcon {
+    margin-left: 20px; /* Moves the plus icon to the right side */
+    cursor: pointer;
+
+  }
+  
+  .modal {
+    width: 30%;
+    height: 30%;
+    margin: 10% auto; /* Center the modal horizontally */
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal h2 {
+    margin-bottom: 20px;
+  }
+  
+  .modal select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .modal button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .modal button:hover {
+    background-color: #0056b3;
+  }
+  
+  .box {
+    background-color: #d8d6dc;
+    padding: 20px;
+    margin-left: 20px;
+    height: 80vh;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table th,
+  .table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+  }
+  

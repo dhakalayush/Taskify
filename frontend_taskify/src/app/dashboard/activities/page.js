@@ -5,8 +5,7 @@ import { BsThreeDots } from "react-icons/bs";
 import { useRouter } from 'next/navigation';
 import Modal from 'react-modal'; // Import react-modal
 import { AiOutlineDelete } from 'react-icons/ai';
-import axios from "/home/anish/Documents/Projects/5th Semester Project/Taskify/frontend_taskify/src/app/axiosSetup"; // Import axios setup file
-
+import axios from "/home/ayush/Documents/GitHub/taskifyrs/frontend_taskify/src/app/axiosSetup"; // Import axios setup file
 Modal.setAppElement('#root'); // Set the app element for react-modal
 
 export default function Activities() {
@@ -287,7 +286,7 @@ export default function Activities() {
             <option value="To Do">To Do</option>
             <option value="In Progress">In Progress</option>
             <option value="Completed">Completed</option>
-          </select>
+          </select>  <br/>   <br/>  <br/>
           <button onClick={() => { closeModal(); updateTaskStatus(selectedTask.id, status); }} style={{            backgroundColor: '#007bff',
             color: 'white',
             border: 'none',
